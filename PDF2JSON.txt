@@ -1,0 +1,35 @@
+ETL routine to Extract Layers from GeoPDF
+
+Step 1: Download GDAL-MAPSERVER https://www.gisinternals.com/release.php
+File Name: release-1930-x64-gdal-3-7-2-mapserver-8-0-1.Zip (As on 09-10-2023)
+
+Step 2: Extract ZIP file --> Rename Folder as GDAL --> Move GDAL folder to in C:/ 
+
+Step 3: Move the GeoPDF file to GDAL folder ---> Rename it as file.pdf
+
+Step 4: (Win + X) --> Windows Powershell (Admin) --> cmd --> Type CD C:/GDAL
+
+Step 5: Type SDKShell
+(This sets the environment for using the GDAL and MapServer Tools)
+
+Step 6: ogrinfo “file.pdf” > file.txt
+
+<-------- Note the List of GeoPDF Layers ------------>
+1: Layers_State
+2: Boundary
+3: XYZ
+<--------- Layers Names depends on your GeoPDF ---------->
+
+Step 7:
+ogr2ogr -f “GEOJSON” <Layer Name>.geojson “file.pdf” <Layer Name> -s_srs EPSG:32643 -t_srs EPSG:4326 --config OGR_PDF_READ_NON_STRUCTURED YES
+
+Example
+ogr2ogr -f “GEOJSON” Layers_State.geojson “file.pdf” Layers_State -s_srs EPSG:32643 -t_srs EPSG:4326 --config OGR_PDF_READ_NON_STRUCTURED YES
+
+
+-s_srs EPSG:32643 (Source Coordinate System)
+-t_srs EPSG:4326 (Target Coordinate System)
+
+Refer:: epsg.io
+
+Step 8: Use .geojson file for further analysis
