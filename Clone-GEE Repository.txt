@@ -1,0 +1,14 @@
+Your locally cached password credentials for accessing git on googlesource.com may need to be refreshed. You can reset your credentials by navigating to your root repository:
+
+https://earthengine.googlesource.com/users/USERNAME/
+
+and then click the "Generate Password" link.
+
+Alternatively, you can navigate directly to:
+
+https://www.googlesource.com/new-password
+
+This will present you with instructions for completing an OAuth authentication workflow which will store credentials on your local machine that will allow access to your git repositories stored on googlesource.com.
+
+Source:
+https://gis.stackexchange.com/questions/383446/error-400-when-cloning-gee-script-locally
